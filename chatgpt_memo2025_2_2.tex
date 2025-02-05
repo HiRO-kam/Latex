@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath}
+
+\begin{document}
+
+求める偏導関数は
+\[
+\frac{\partial}{\partial x} \left( \frac{x^3 y}{x^2 + y^2} \right)
+\]
+
+この関数は、分子と分母がともに \( x \) を含む分数関数なので、商の微分公式を使う。
+
+\section*{1. 商の微分公式}
+\[
+\frac{d}{dx} \left( \frac{f(x)}{g(x)} \right) = \frac{f'(x) g(x) - f(x) g'(x)}{g(x)^2}
+\]
+ここで、
+\begin{align*}
+    f(x, y) &= x^3 y, \\
+    g(x, y) &= x^2 + y^2
+\end{align*}
+
+\section*{2. 分子 \( f(x, y) = x^3 y \) の偏導関数}
+\[
+\frac{\partial}{\partial x} (x^3 y) = 3x^2 y
+\]
+
+\section*{3. 分母 \( g(x, y) = x^2 + y^2 \) の偏導関数}
+\[
+\frac{\partial}{\partial x} (x^2 + y^2) = 2x
+\]
+
+\section*{4. 商の微分公式を適用}
+\[
+\frac{\partial}{\partial x} \left( \frac{x^3 y}{x^2 + y^2} \right)
+=
+\frac{(3x^2 y)(x^2 + y^2) - (x^3 y)(2x)}{(x^2 + y^2)^2}
+\]
+
+\section*{5. 分子の整理}
+分子：
+\[
+(3x^2 y)(x^2 + y^2) - (x^3 y)(2x)
+\]
+
+展開すると、
+\[
+3x^4 y + 3x^2 y^3 - 2x^4 y
+\]
+
+さらに整理して、
+\[
+x^4 y + 3x^2 y^3
+\]
+
+\section*{6. 最終的な式}
+\[
+\frac{y (x^4 + 3x^2 y^2)}{(x^2 + y^2)^2}
+\]
+\end{document}

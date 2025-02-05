@@ -1,0 +1,102 @@
+\documentclass{jsarticle}  
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage[dvipdfmx]{graphicx}
+
+\title{冬休み課題}
+\date{\today}
+
+\author{2B07 加村優明}
+\begin{document}
+\maketitle
+
+太陽を原点とすると、惑星の位置は極座標(r,$\varphi$)を用いて
+ \begin{align}
+    &x=r\,cos\varphi \\
+    &y=r\,sin\varphi
+ \end{align}
+と表すことができる。以降、$r$増加方向($\varphi$=const)を動径方向、逆に$\varphi$増加方向を方位角方向とよぶ。また、太陽の質量を$M$,惑星の質量を$m$とする。
+速度$v$の$x,y$成分$v_x,v_y$は(1),(2)を時間微分したものなので、
+  \begin{align}
+  &\dot{x}=v_x=\dot{r}\,cos\varphi-\dot{\varphi}r\,sin\varphi \\
+  &\dot{y}=v_y=\dot{r}\,sin\varphi+\dot{\varphi}r\,cos\varphi
+  \end{align}
+
+また、加速度$a$の$x,y$成分$a_x,a_y$はさらに(3),(4)を時間微分したものなので、
+  \begin{align}
+    &\ddot{x}=a_x=\ddot{r}\,cos\varphi-2\dot{r}\dot{\varphi}\,sin\varphi-r\dot{\varphi}^2\,cos\varphi-r\ddot{\varphi}\,sin\varphi \\
+    &\ddot{y}=a_y=\ddot{r}\,sin\varphi+2\dot{r}\dot{\varphi}\,cos\varphi-r\dot{\varphi}^2\,sin\varphi+r\ddot{\varphi}\,cos\varphi
+  \end{align}
+
+動径方向に働く中心力の大きさを$f(r)$とすると、その$x,y$成分は
+  \begin{align}
+    &m\ddot{x}=f_x=f(r)\,cos\varphi\\
+    &m\ddot{y}=f_y=f(r)\,sin\varphi
+  \end{align}
+    
+$(7)cos\varphi+(8)sin\varphi$と$(7)sin\varphi-(8)cos\varphi$から次の式が得られる。
+  \begin{align}
+  &m(\ddot{x}\,cos\varphi+\ddot{y}\,sin\varphi)=f(r)\\
+  &m(\ddot{x}\,sin\varphi-\ddot{y}\,sin\varphi)=0
+  \end{align}
+
+この２式を(5),(6)によって書き直すと、
+  \begin{align}
+    &m(\ddot{r}-r\varphi^2)=f(r) \\
+    &m(2\dot{r}\dot{\varphi}+r\ddot{\varphi})=0
+  \end{align}
+
+惑星に働く太陽からの引力(万有引力)は原点に向かう向心力とみることができ(太陽を原点に置いたため)、その大きさは
+  \begin{align}
+    f(r)=-G\frac{Mm}{r^2}
+  \end{align}
+
+である。惑星の運動方程式は(11),(12)より、
+  \begin{align}
+    &\ddot{r}-r\dot{\varphi}=-G\frac{M}{r^2} \\
+    &r^2\dot{\varphi}=h \qquad(\text{面積速度一定})
+  \end{align}
+
+と書きなおせる。運動方程式より$r$を$\varphi$を通して時間$t$の関数であるとし,
+$u=\frac{1}{r}$とおくと、$r$の二階微分は
+  \begin{align}
+    \frac{d^2r}{dt^2}=-h\frac{d^2u}{d\varphi^2}\dot{\varphi}=-\frac{h^2}{r^2}\frac{d^2u}{d\varphi^2} 
+  \end{align}
+
+これを用いて(14)の運動方程式は
+  \begin{align}
+    \frac{d^2u}{d\varphi^2}+u=\frac{GM}{h^2}
+  \end{align}
+
+となる。左辺の$u$を移項すると、$u$を二階微分したら$-u$として返ってくる式となるため、これは単振動のときと同じなので、一般解は
+  \begin{align}
+    u=A\,cos(\varphi-\varphi_0)+\frac{GM}{h^2} \qquad(A\geq 0)
+  \end{align}
+
+$u=\frac{1}{r}$より、
+  \begin{align}
+    r=\frac{1}{\frac{GM}{h^2}+A\,cos(\varphi-\varphi_0)}
+  \end{align}
+軌道の方程式と係数を比較して、
+  \begin{align}
+    &l=\frac{h^2}{GM},\qquad \text{よって、}h=\sqrt{GMl} \\
+    &\epsilon=\frac{h^2}{GM}A 
+  \end{align}
+
+今、惑星の面積速度$h$と、離心率$\epsilon$がわかったため、これらから惑星が楕円軌道を描く周期$T$を求める。
+
+\leavevmode 楕円の長半径を$a$,短半径を$b$とすると、楕円の面積は$\pi ab$で表される。$b$は$b=a\sqrt{1-\epsilon^2}=\sqrt{al}$より、周期$T$は
+  \begin{align}
+    &T=\frac{\pi ab}{\frac{h}{2}}=\frac{2\pi}{\sqrt{GM}}a^\frac{3}{2} \\
+    \text{右辺からaを消して、}&\frac{T^2}{a^3}=\frac{4\pi^2}{\sqrt{GM}}
+  \end{align}
+(23)より、調和の法則(ケプラーの第三法則)が示せた。またこの式から、$M$が太陽の質量で右辺はすべて定数より惑星の種類によらず、太陽系ならばすべての惑星がこの値をとる(太陽系でなくても引力を及ぼす物体が同じならば同じ値)。
+つまり、
+  \begin{align}
+    \frac{T^2}{a^3}=Const.
+  \end{align}
+
+  以上よりケプラーの第三法則が導かれた。
+\end{document}

@@ -1,0 +1,291 @@
+\documentclass{jsarticle} 
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{mathtools}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{amsfonts}
+
+\title{冬休み課題}
+\date{\today}
+
+\author{2B07 加村優明}
+\begin{document}
+\maketitle
+
+任意の自然数$n$と以下の行列$A$に対して行列$A^n$を計算せよ.
+  \begin{align*}
+  (1)A = \begin{pmatrix}
+     1 & 1 \\
+    -4 & 5
+         \end{pmatrix},
+  (2)A = \begin{pmatrix}
+    -3 & 2 \\
+    -2 & 1
+         \end{pmatrix}         
+  \end{align*}
+
+与えられた行列$A$に対し,互いに平行でない二本の固有ベクトルが存在するとき$A$は対角化可能である.
+このとき二本の固有ベクトルを並べた行列$P$は正則であり,$P$による$A$の相似変換$P^-1 AP$は固有値が対角成分
+に並んだ対角行列である.(定理)
+
+\leavevmode\\
+$A \overrightarrow{x} = \lambda \overrightarrow{x}$を満たす固有値$\lambda$を求める. 
+
+  \begin{align*}
+    (A-\lambda E)\overrightarrow{x} &= 0\\
+    \det\begin{pmatrix}
+    1-\lambda & 1 \\
+    -4 & 5-\lambda 
+    \end{pmatrix}
+  &=(1-\lambda)(5-\lambda)-(-4)\\
+  &=\lambda ^2 -6\lambda +9\\
+  &=0
+  \end{align*} 
+よって,$\lambda = 3$(重解)
+
+\leavevmode\\
+固有値が重解を持つ場合次の二通りが考えられる.
+
+\leavevmode\\
+(1)固有値$\lambda$に属する平行ではない二本の固有ベクトル $\overrightarrow{x_1},\overrightarrow{x_2}$が存在する.
+\leavevmode\\
+(2)固有値$\lambda$に属する固有ベクトルはとある一本の$\overrightarrow{x}$とその定数倍のみ存在する.
+
+\leavevmode\\
+(1)は与えられた行列$A$が単位行列の定数倍でない限り存在しない.よって(2)について考える.
+
+\leavevmode\\
+$A \overrightarrow{y} = \lambda \overrightarrow{y} + \overrightarrow{x}$を満たす広義固有ベクトルを考える.\\
+$(A -\lambda E)\overrightarrow{y} = \overrightarrow{x}$\\ここで,$\overrightarrow{y}\neq \overrightarrow{x}である.$   
+ 
+\leavevmode\\
+$(A-\lambda E)\overrightarrow{x} = 0$に固有値$\lambda $を代入して解くと,パラメータ$t$を用いて
+$\overrightarrow{x} = \begin{pmatrix}1\\2 \end{pmatrix} t$とかける.
+
+\leavevmode\\
+$t=1$として考えると,
+  \begin{align*}
+    \left(
+      \begin{pmatrix}
+        1 & 1\\
+        -4 & 5
+      \end{pmatrix}
+      -3\begin{pmatrix}
+        1 & 0\\
+        0 & 1
+      \end{pmatrix}
+    \right)\overrightarrow{y} = \begin{pmatrix} 1\\2 \end{pmatrix}
+  \end{align*}
+
+これを解くと,$\overrightarrow{y} = \begin{pmatrix} t\\2t+1 \end{pmatrix}$と書かれることがわかる.
+\leavevmode\\
+$t=1$として,$\overrightarrow{y} =\begin{pmatrix} 1\\3 \end{pmatrix}$を考える.
+\leavevmode\\
+$\overrightarrow{x},\overrightarrow{y} $を並べた
+$P = (\overrightarrow{x},\overrightarrow{y}) = \begin{pmatrix} 1&1\\2&3 \end{pmatrix}$
+に対し,
+  \begin{align*}
+  P^-1AP &= P^{-1}A(\overrightarrow{x},\overrightarrow{y})\\  
+         &= P^{-1}(A \overrightarrow{x},A \overrightarrow{y})\\
+         &= P^{-1}(\lambda \overrightarrow{x},\lambda \overrightarrow{y})\\
+         &= P^{-1}(\overrightarrow{x},\overrightarrow{y})\begin{pmatrix} \lambda &1\\0&\lambda \end{pmatrix}\\
+         &= P^{-1}P\begin{pmatrix} \lambda &1\\0&\lambda  \end{pmatrix}
+         &\begin{pmatrix} \lambda &1\\0&\lambda  \end{pmatrix}
+         &\begin{pmatrix}  3&1\\0&3  \end{pmatrix}
+  \end{align*}
+
+この行列の$n$乗は$\begin{pmatrix}3&1\\0&3\end{pmatrix} ^n = \begin{pmatrix}3^n&n3^n-1\\0&3^n \end{pmatrix}$\\
+もとの行列$A$の$n$乗は,
+\begin{align*}
+  A^n &= P(P^{-1}AP)^n P^{-1}\\
+      &= \begin{pmatrix}1&1\\2&3\end{pmatrix} \begin{pmatrix}3^n&n3^n{-1}\\0&3^n \end{pmatrix} \begin{pmatrix}1&1\\2&3\end{pmatrix}^{-1}\\  
+      &= \begin{pmatrix}3^n&n3{n-1}+3^{n}\\2\cdot 3^n&2n\cdot 3^{-1}+3^{n+1}\end{pmatrix} \begin{pmatrix}3&-1\\-2&1 \end{pmatrix}\\
+      &= \begin{pmatrix}-2n\cdot 3^{n-1}+3\cdot 3^{n-1}&n\cdot 3^{n-1}\\-4n\cdot 3^{n-1}&2n\cdot 3^{n-1}+3\cdot 3^{n-1}\end{pmatrix}\\
+      &= 3^{n-1}\begin{pmatrix}-2n+3&n\\-4n&2n+3\end{pmatrix}
+\end{align*}
+
+\leavevmode\\
+\raggedleft よって,(1)$A = 3^{n-1}\begin{pmatrix}-2n+3&n\\-4n&2n+3\end{pmatrix}$
+
+\leavevmode\\
+\raggedright (2)$A = \begin{pmatrix}-3 & 2 \\-2 & 1\end{pmatrix}$ 
+\leavevmode\\
+(1)同様,固有方程式を解いて固有値の個数を確認する.
+\begin{align*}
+  \det \begin{pmatrix} -3-\lambda &2\\-2&1-\lambda \end{pmatrix} 
+  &=(-3-\lambda)(1-\lambda)-(2\cdot -2)\\
+  &=\lambda ^2 +2\lambda +1\\
+  &=0\\
+\text{よって,}
+\lambda &= -1
+\end{align*}
+
+\leavevmode\\
+固有値が一つで,$A$が単位行列の定数倍ではないため,
+  \begin{align*}
+      A \overrightarrow{x} &= \lambda \overrightarrow{x}\\
+      A \overrightarrow{y}  &= \lambda  \overrightarrow{y} + \overrightarrow{x}
+  \end{align*}
+
+\leavevmode\\
+それぞれを満たす$\overrightarrow{x},\overrightarrow{y}$を求める.
+\leavevmode\\
+$\lambda = -1$より,
+  \begin{align*}
+    \begin{pmatrix}-2&2\\-2&2\end{pmatrix} \overrightarrow{x} &= \begin{pmatrix}0\\0\end{pmatrix}\\
+    \overrightarrow{x} &= \begin{pmatrix}1\\1\end{pmatrix}t 
+    \qquad \text{(t=1として,$\overrightarrow{y}= \begin{pmatrix}1\\1 \end{pmatrix}$を考える.)}\\
+    \begin{pmatrix}-2&2\\-2&2\end{pmatrix} \overrightarrow{y} &= \begin{pmatrix}1\\1\end{pmatrix}\\
+    \overrightarrow{y} &= \begin{pmatrix}t\\t+ \frac{1}{2} \end{pmatrix} 
+    \qquad \text{( t=1として,$\overrightarrow{y}= \begin{pmatrix}1\\\frac{3}{2} \end{pmatrix}$を考える.)}
+  \end{align*}
+
+\leavevmode\\
+これまでに得られた$\overrightarrow{x},\overrightarrow{y}$を並べて,
+$P =( \overrightarrow{x},\overrightarrow{y} )= \begin{pmatrix}1&1\\1&\frac{3}{2} \end{pmatrix}$
+\leavevmode\\
+(1)で示した通り,$P^{-1}AP = \begin{pmatrix}\lambda &1\\0&\lambda \end{pmatrix}$より,
+  \begin{align*}
+    P^{-1}AP = \begin{pmatrix}-1&1\\0&-1\end{pmatrix}\\
+    P^{-1}A^n P = (P^{-1}AP)^n &= \left(\begin{pmatrix}(-1)^n&n(-1)^{n-1}\\0&(-1)^n\end{pmatrix}\right)\\
+    A^n = P(P^{-1}A^n P)P^{-1} &= \begin{pmatrix}1&1\\1&\frac{3}{2} \end{pmatrix} \left(\begin{pmatrix}(-1)^n&n(-1)^{n-1}\\0&(-1)^n\end{pmatrix}\right) \begin{pmatrix}1&1\\1&\frac{3}{2} \end{pmatrix}^{-1}\\
+                               &= \begin{pmatrix}(-1)^n&n(-1)^{n-1}+(-1)^n\\(-1)^n&n(-1)^{n-1}+\frac{3}{2}(-1)^n \end{pmatrix}\begin{pmatrix}1&1\\1&\frac{3}{2} \end{pmatrix}^{-1}\\
+                               &= \begin{pmatrix} 3(-1)^n -2n(-1)^n -2(-1)^n &-2(-1)^n+2n(-1)^{n-1}+2(-1)^n\\3(-1)^n -2n(-1)^{n-1} -3(-1)^n&-2(-1)^n+2n(-1)^{n-1}+3(-1)^n\end{pmatrix}\\
+                               &= \begin{pmatrix} 2n(-1)^n+(-1)^n&-2n(-1)^n\\2n(-1)^n&-2n(-1)^n+(-1)^n\end{pmatrix}\\
+                               &= (-1)^n\begin{pmatrix}2n+1&-2n\\2n&-2n+1\end{pmatrix}
+\end{align*}
+
+\leavevmode\\
+\raggedleft よって,(2)$A = (-1)^n\begin{pmatrix}2n+1&-2n\\2n&-2n+1\end{pmatrix}$
+
+\newpage
+\raggedright No.15のプリントより,
+\begin{align*}
+\frac{i^n+(-i)^n}{2}=\begin{cases}
+  1        & (\text{nは4で割り切れる})\\
+  0        & (\text{nは4で割って1余る数})\\
+  -1       & (\text{nは4で割って2余る数})\\
+  0        & (\text{nは4で割って3余る数})
+\end{cases}
+\end{align*}  
+
+\leavevmode\\
+それぞれの場合について評価する.
+\leavevmode\\
+まず,それぞれの場合を言い換える.
+\begin{align}
+  \text{nは4で割り切れる}&\Leftrightarrow n=4m\\
+  \text{nは4で割って1余る数}&\Leftrightarrow n=4m+1\\
+  \text{nは4で割って2余る数}&\Leftrightarrow n=4m+2\\
+  \text{nは4で割って3余る数}&\Leftrightarrow n=4m+3
+\end{align}
+  
+(1)について,$i$は2乗すると$-1$.また,4乗すると$(-1\cdot-1)$より1となる.
+これは複素数平面上における回転と考えることができる.($i=\frac{\pi}{2}$回転)
+
+\leavevmode\\
+$i$は$z=a+bi$で$a=0,b=1$\\
+$i$は$z=a-bi$で$a=0,b=-1$ \qquad とみなせる.\\
+
+\leavevmode\\
+$i^n$は反時計回り,$(-i)^n$は時計回りに回転するので,偶数回回転した時打ち消しあい,奇数回回転した時強め合う.
+
+\leavevmode\\
+よって,
+\begin{align*}
+  \frac{i^n+(-i)^n}{2}=\begin{cases}
+    1        & (n=4m\mid n\in  \mathbb{Z} )\\
+    0        & (n=4m+1\mid n\in  \mathbb{Z} )\\
+    -1       & (n=4m+2\mid n\in  \mathbb{Z} )\\
+    0        & (n=4m+3\mid n\in  \mathbb{Z} )
+  \end{cases}
+\end{align*}
+が示せた.
+
+\leavevmode\\
+実数$\theta $に対し,与えられたベクトルを左に$\theta $回転する変換$f$の表現行列
+\begin{align*}
+  A = \begin{pmatrix}cos\,\theta &-sin\,\theta \\sin\,\theta &cos\,\theta \end{pmatrix}
+\end{align*}
+を考える.
+
+\leavevmode\\
+(1) \qquad $f$を$n$回合成する.$\Longleftrightarrow$ $A$を$n$回かける.
+\begin{align*}
+  A &= \prod_{i=1}^n \begin{pmatrix}cos\,\theta &-sin\,\theta \\sin\,\theta &cos\,\theta \end{pmatrix}_i\\
+  A &= \prod_{i=1}^{n-1} \begin{pmatrix}cos^2\,\theta -sin^2\,\theta &-2sin\,\theta cos\,\theta \\2sin\,\theta cos\,\theta &cos^2\,\theta -sin^2\,\theta \end{pmatrix}_i\\
+  A &= \prod_{i=1}^{n-1} \begin{pmatrix}cos\,2\theta &-sin\,2\theta \\sin\,2\theta &cos\,2\theta \end{pmatrix}_i\\
+  A &= \begin{pmatrix}cos\,n\theta &-sin\,n\theta \\sin\,n\theta &cos\,n\theta \end{pmatrix}
+\end{align*}  
+
+\leavevmode\\
+(2)\qquad $f$を$n$回合成する.$\Longleftrightarrow$ $A$を$n$回かける.\\
+$A$の固有ベクトルを見つける.
+\begin{align*}
+  \det \begin{pmatrix}cos\,\theta -\lambda &-sin\,\theta \\sin\,\theta &cos\,\theta -\lambda \end{pmatrix}
+  &= cos^2\,\theta -2\lambda cos\theta +\lambda ^2 + sin^2\theta \\
+  &=\lambda ^2 -2\lambda cos\,\theta +1\\
+  &=0\\
+\lambda &= cos\,\theta \pm i\,sin\,\theta\\
+\end{align*}  
+
+$\lambda_1= cos\,\theta + i\,sin\,\theta , \lambda_2= cos\,\theta - i\,sin\,\theta$とすると,
+\begin{align*}
+  \lambda_1:\begin{pmatrix}-i\,sin\, \theta &-sin\,\theta \\sin\,\theta &-i\,sin\,\theta \end{pmatrix}
+  \begin{pmatrix}x\\y\end{pmatrix} &= \begin{pmatrix}0\\0\end{pmatrix}\\
+  \overrightarrow{x_1} &= \begin{pmatrix}i\\1\end{pmatrix}\\
+  \lambda_2:\begin{pmatrix}i\,sin\, \theta &-sin\,\theta \\sin\,\theta &i\,sin\,\theta \end{pmatrix}
+  \begin{pmatrix}x\\y\end{pmatrix} &= \begin{pmatrix}0\\0\end{pmatrix}\\
+  \overrightarrow{x_2} &= \begin{pmatrix}1\\i\end{pmatrix}
+\end{align*}  
+得られた二つのベクトルを並べて,$P = \begin{pmatrix}i&1\\1&i \end{pmatrix}$
+\leavevmode\\
+$P^{-1}AP$は固有値を並べた
+\begin{align*}
+P^{-1}AP =\begin{pmatrix} cos\,\theta + i\,sin\,\theta&0\\0&cos\,\theta - i\,sin\,\theta \end{pmatrix}
+\end{align*}  
+
+\leavevmode\\
+\raggedleft よって,(2) $P^{-1}AP =\begin{pmatrix} cos\,\theta + i\,sin\,\theta&0\\0&cos\,\theta - i\,sin\,\theta \end{pmatrix}$
+
+\newpage
+\raggedright (3)数学的帰納法より,$(cos\,\theta + i\,sin\,\theta)^n = cos\,n\theta + i\,sin\,n\theta$について,
+
+\leavevmode\\
+(1)\qquad n = 1 のとき,$cos\,\theta + i\,sin\,\theta = cos\,1\cdot \theta + i\,sin\,1\cdot \theta$よりの時立つ.\\
+(2)\qquad n = k のとき,$(cos\,\theta + i\,sin\,\theta)^k = cos\,k \cdot \theta + i\,sin\,k \cdot \theta$が成り立つとすると.\\
+\quad\qquad n = k+1のとき,
+\begin{align*}
+  (cos\,\theta + i\,sin\,\theta)^{k+1} &= (cos\,\theta + i\,sin\,\theta)^{k}(cos\,\theta + i\,sin\,\theta)\\
+                                       &= (cos\,k \cdot \theta + i\,sin\,k \cdot \theta)(cos\,\theta + i\,sin\,\theta)\\
+                                       &= (cos\,k \cdot \theta\, cos\, \theta - sin\,k \cdot \theta\, sin\, \theta) + i(sin\,k \cdot \theta\, cos\, \theta + cos\,k \cdot \theta\, sin\, \theta)\\
+                                       &= cos\,(k+1) \cdot \theta + i\,sin\,(k+1) \cdot \theta
+\end{align*} 
+
+\leavevmode\\
+つまり,$n = k$のとき,,$(cos\,\theta + i\,sin\,\theta)^n = cos\,k \cdot \theta + i\,sin\,k \cdot \theta$が成り立つなら,$n = k+1$のときでも成り立つ.\\
+
+\leavevmode\\
+(1),(2)より,数学的帰納法から,$(cos\,\theta + i\,sin\,\theta)^n = cos\,n\theta + i\,sin\,n\theta$(ド・モアブルの定理)が成り立つ.
+
+\leavevmode\\
+また,$(cos\,\theta - i\,sin\,\theta)$は$(cos\,\theta + i\,sin\,\theta)$の共役な複素数であるため,
+$(cos\,\theta - i\,sin\,\theta)$にもド・モアブルの定理が成り立つ.
+
+\leavevmode\\
+よって,
+\begin{align*}
+  P^{-1}A^n P &= (P^{-1}AP)^n =\begin{pmatrix} cos\,\theta + i\,sin\,\theta&0\\0&cos\,\theta - i\,sin\,\theta \end{pmatrix}^n 
+  =\begin{pmatrix} cos\,n\theta + i\,sin\,n\theta&0\\0&cos\,n\theta - i\,sin\,n\theta \end{pmatrix}\\
+  A^n = P(P^{-1}A^n P)P^{-1} &= \begin{pmatrix}i&1\\1&i \end{pmatrix} \begin{pmatrix} cos\,n\theta + i\,sin\,n\theta&0\\0&cos\,n\theta - i\,sin\,n\theta \end{pmatrix} \begin{pmatrix}i&1\\1&i \end{pmatrix}^{-1}\\
+  &= \begin{pmatrix} i\, cos\,n\theta -sin\,n\theta&cos\,n\theta -i\,sin\,n\theta \\cos\,n\theta + i\,sin\,n\theta&i\,cos\,n\theta + sin\,n\theta \end{pmatrix} \left(\frac{1}{-2}\begin{pmatrix} i&-1\\-1&i \end{pmatrix}\right)\\
+  &= -\frac{1}{2} \begin{pmatrix}-cos\,n\theta - i\,sin\,n\theta -cos\,n\theta + i\,sin\,n\theta&-i\,cos\,n\theta + sin\,n\theta + i\,cos\,n\theta + sin\,n\theta\\i\,cos\,n\theta -sin\,n\theta -i\,cos\,n\theta -sin\,n\theta&-cos\,n\theta-i\,sin\,n\theta-\,cos\,n\theta + i\,sin\,n\theta \end{pmatrix}\\
+  &=\begin{pmatrix}cos\,n\theta &-sin\,n\theta \\sin\,n\theta &cos\,n\theta \end{pmatrix}
+\end{align*}  
+
+\leavevmode\\
+(4)\qquad(3)で示したド・モアブルの定理を用いて求めた表現行列と,(1)で求めた表現行列は一致している.
+
+\end{document}
