@@ -1,0 +1,162 @@
+\documentclass{jsarticle}  
+
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{physics}
+\usepackage[dvipdfmx]{graphicx}
+
+\title{三期物理解き直し}
+\date{\today}
+
+\author{2B07 加村優明}
+\begin{document}
+\maketitle
+
+\fbox{1}
+  \begin{itemize}
+  \item[(1)] 略
+  \item[(2)] 定義より,
+  \begin{align*}
+    \frac{dS}{dt} = \frac{1}{2}r^2\frac{d\theta}{dt}
+  \end{align*}
+  \item[(3)] 円周方向の運動方程式より,  
+  \begin{align*}
+    m(r \frac{d^2\theta }{dt^2} + 2\frac{dr}{dt}\frac{d \theta}{dt}) &= 0\\
+    m(\frac{1}{r}\frac{d}{dt}(r^2 \frac{d \theta}{dt})) &= 0\\
+    \frac{d}{dt}(r^2 \frac{d \theta}{dt}) &= 0\\
+    (r^2 \frac{d \theta}{dt}) &= Const.
+    \end{align*}
+  (2)$\frac{dS}{dt}=\frac{1}{2}(r^2 \frac{d \theta}{dt}) $より$\frac{dS}{dt}$が定数の積で表されるため、面積速度一定の法則が示された。
+  \item[(4)] 惑星が点Bに達した瞬間,一瞬だけ太陽に向かって引力が働くため,
+  BCは慣性力BC'、CC'と同じ長さの中心力BO'の合力と見ることができ,$\angle BCC'=\frac{\pi}{2}$となる.
+  \begin{figure}[b]
+    \centering
+    \includegraphics[width=0.5\textwidth]{figure/Newton.jpg}
+    \caption{Newtonによる面積速度一定の法則の証明(画像はAIで作成)}
+    \label{fig:1}
+  \end{figure}
+  $|OB|=a$,$|BC|=b$,$|BC'|=c$とし,$\angle OBA=\theta$とすると,平行線の同位角より,$\angle OBA = \angle BC'C$
+  したがって,$b=c\,sin\,\theta$.
+  \begin{align*}
+    \triangle OBC &=\frac{1}{2}ab \sin\frac{\pi}{2}\\
+                  &=\frac{1}{2}ac \sin\theta\\
+    \triangle OAB &=\frac{1}{2}ac \sin\theta\\ 
+    \triangle OBC &=\triangle OAB            
+  \end{align*}  
+  \item[(5)](3)(4)で求まった一定値を$\frac{1}{2}h$と置くため,$h = r^2 \frac{d \theta}{dt}$   
+  \begin{align*}
+    \frac{d\theta}{dt} = \frac{h}{r^2}\\
+    \frac{d^2r}{dt^2} = \frac{d}{dt}\frac{dr}{dt} = \frac{d\theta}{dt}\frac{d}{d\theta}(\frac{d\theta}{dt}\frac{dr}{d\theta}) = \frac{h}{r^2}\frac{d}{d\theta}(\frac{h}{r^2}\frac{dr}{d\theta})\\
+    \text{ここでu=1/rと変数変換すると,}\\
+    \frac{d\theta}{dt} = hu^2\\
+    \frac{d^2r}{dt^2} = -h^2u^2\frac{d^2u}{d\theta^2}
+  \end{align*} 
+  \item[(6)] 半径方向の運動方程式より,
+  \begin{align*}
+    m(\frac{d^2r}{dt^2} - r(\frac{d\theta}{dt})^2) &= -\frac{GMm}{r^2}\\
+    m( -h^2u^2\frac{d^2u}{d\theta^2} -\frac{1}{u}(hu^2)^2) &= -\frac{GMm}{r^2}\\
+    -h^2u^2(\frac{d^2u}{d\theta} + u) &= -GMu^2\\
+    \frac{d^2u}{d\theta^2} + u &= \frac{GM}{h^2}\\
+  \end{align*}  
+二階線形非同次微分方程式が得られた,一般解は
+  \begin{align*}
+    u &= A\cos\theta + \frac{GM}{h^2}\\
+    \text{したがって,}\qquad r = \frac{1}{A\cos\theta + \frac{GM}{h^2}} &= \frac{\frac{h^2}{GM}}{1+\frac{Ah^2}{GM}\cos\theta} 
+  \end{align*}  
+  \item[(7)]
+  \begin{itemize}
+    \item[(a)] 球面$S_1$,$S_2$と円錐面が接する面を$Q$,$R$とする$O$と$O'$,$Q$と$R$はそれぞれ楕円上の任意の点$P$からの接線と見ることができ,
+    接線の距離は等しいため$|PQ|=|PO|,|PR|=|PO'|$ここで$|PR|+|PQ|=|QR|$で$|QR|$は母線の長さより常に一定よって,$|PR|+|PQ|=Const.$
+    \leavevmode\\
+    \item[(b)] Pから面$\pi$までの距離はそれぞれ$|PQ|\cos\alpha$,$|PH|\cos\beta$と表される。ここで$|PQ|=|PO|$より,$|PO|\cos\alpha = |PH|\cos\beta$したがって,
+    $\frac{|OP|}{|PH|} = \frac{\cos\beta}{\cos\alpha}$,$\alpha$と$\beta$は球を入れた時点で一意に決まる値より$\frac{\cos\beta}{\cos\alpha} = Const.$
+    よって,$\frac{|OP|}{|PH|}$一定 
+    \leavevmode\\
+    \item[(c)] $x=r\cos\theta,\,y=r\sin\theta$とする.余弦定理より$|O'P| = \sqrt{4c^2 + r^2 + 4cr\cos\theta}$,$|OP| = \sqrt{r^2\cos^2\theta+r^2\sin^2\theta} = r$定義より,楕円は焦点までの距離の和が一定なので
+    \begin{align*}
+      r+\sqrt{4c^2 + r^2 + 4cr\cos\theta} &= 2a\\
+      4c^2 + r^2 + 4cr\cos\theta &= 4a^2 -4ar +r^2\\
+      4ar + 4cr\cos\theta &= 4b^2\\
+      4a\sqrt{x^2+y^2} + 4cx &= 4b^2\\
+      a^2(x^2+y^2) &= b^4 -2b^2cx +c^2x^2\\
+      (a^2-c^2)x^2 + a^2y^2 &= b^4 -2b^2cx\\
+      b^2x^2 + 2b^2cx + a^2y^2 &= b^4\\
+      b^2(x+c)^2 - b^2c^2 +a^2y^2 &= b^4\\
+      b^2(x+c)^2 +a^2y^2 &= b^2(b^2+c^2)\\
+      b^2(x+c)^2 +a^2y^2 &= b^2a^2\\
+      \frac{(x+c)^2}{a^2} + \frac{y^2}{b^2} &=1 
+    \end{align*}  
+    \item[(d)] (c)第三式より,
+    \begin{align*}
+      4ar + 4cr\cos\theta &= 4b^2\\
+      r(a + c\cos\theta) &= b^2\\
+      r &= \frac{b^2}{a + c\cos\theta}\\
+      r &= \frac{b^2}{a(1 + \frac{c}{a}\cos\theta)}\\
+    \end{align*}
+    ここで,$\frac{c}{a}=e$とすると,$\sqrt{a^2-c^2}=b$より,
+    \begin{align*}
+      r &= \frac{a^2-c^2}{a(1 + e\cos\theta)}\\
+      r &= \frac{a-\frac{c^2}{a}}{(1 + e\cos\theta)}\\
+      r &= \frac{a(1-e^2)}{1+e\cos\theta}
+    \end{align*} 
+    \leavevmode\\ 
+    \item[(e)] $X=x+c$として,標準形$\frac{(X)^2}{a^2} + \frac{y^2}{b^2}$を考える.
+    $X = ar\cos t,y = br\sin t(0\leq t\leq 2\pi)$とする.
+    楕円で囲まれた領域を$D$とおくと,$D$は区分的に$C^1$級縦線集合としても$C^1$級横線集合としても表される.求める面積$S$は,
+    \begin{align*}
+      S = \frac{1}{2}\int_{\partial D} x\,dy - y\,dx &= \frac{1}{2}\int_{0}^{2\pi}(a\cos t)(b\sin t)'\,dt - \frac{1}{2}\int_{0}^{2\pi}(b\sin t)(a\cos t)'\,dt\\
+      =\frac{ab}{2}\int_{0}^{2\pi}\cos^2 t + \sin^2 t\,dx &= \frac{ab}{2}\int_{0}^{2\pi}\,dt =\frac{ab}{2}\times 2\pi = \pi ab 
+    \end{align*}
+    ここで(d)より,$b = \sqrt{a^2(1-e^2)}$なので,
+    \begin{align*}
+      S = \pi ab = \pi a\sqrt{a(1-e^2)}
+    \end{align*}  
+  \end{itemize}  
+  \item[(8)]  軌道の方程式と係数を比較して、
+  \begin{align*}
+    &l=\frac{h^2}{GM},\qquad \text{よって、}h=\sqrt{GMl} \\
+    &e=\frac{h^2}{GM}A 
+  \end{align*}
+今、惑星の面積速度$h$と、離心率$e$がわかったため、これらから惑星が楕円軌道を描く周期$T$を求める。
+\leavevmode 楕円の長半径を$a$,短半径を$b$とすると、楕円の面積は$\pi ab$で表される。$\frac{b^2}{a}=l$より,$b=\sqrt{a^2(1-e^2)}=\sqrt{al}$より、周期$T$は
+  \begin{align*}
+    T=\frac{\pi ab}{\frac{h}{2}}=\frac{2\pi}{\sqrt{GM}}a^\frac{3}{2}
+  \end{align*}  
+    右辺からaを消して,
+  \begin{align}
+    \frac{T^2}{a^3}=\frac{4\pi^2}{GM} 
+  \end{align}
+  以上より、調和の法則(ケプラーの第三法則)が示せた。またこの式から、$M$が太陽の質量で右辺はすべて定数より惑星の種類によらず、太陽系ならばすべての惑星がこの値をとる(太陽系でなくても引力を及ぼす物体が同じならば同じ値)。
+  つまり、
+  \begin{align*}
+    \frac{T^2}{a^3}=Const.
+  \end{align*}
+  \end{itemize}     
+\fbox{2}
+  \begin{itemize}
+  \item[(1)]
+  可逆な断熱準静過程
+  \[(T_A, V_A, N) \xrightarrow{aq} (T', V_B, N)\]
+  を考える。ここで $aq$ は断熱準静過程（adiabatic, quasistatic）である。(以下略記$aq$)
+  \leavevmode\\
+  証明:
+    \begin{itemize}
+      \item[(i)]$T' < T_B$ の場合  
+      ランフォードの原理より
+      \[(T', V_B, N) \xrightarrow{a} (T_B, V_B, N)\]が存在する。よって
+      \[(T_A, V_A, N) \to (T', V_B, N) \to (T_B, V_B, N)\]の遷移が成立する。
+      \item[(ii)] $T' > T_B$ の場合  
+      ランフォードの原理より
+      \[(T_B, V_B, N) \xrightarrow{a} (T', V_B, N)\]
+      が存在し、また $aq$ は可逆であるため、
+      \[(T', V_B, N) \xrightarrow{aq} (T_A, V_A, N)\]が成立する。よって
+      \[(T_B, V_B, N) \to (T', V_B, N) \xrightarrow{aq} (T_A, V_A, N)\]の遷移が成立する。
+      \item[(iii)] $T' = T_B$ のとき
+      \[(T_A, V_A, N) \xrightarrow{aq} (T_B, V_B, N)\]
+      がそのまま成立する。
+    \end{itemize} 
+  \item[(2)] 気体がある状態にあるときに気体の中に蓄えられているエネルギー量（$dU = \delta W + \delta Q$）
+  \item[(3)] 1モルの物質の温度を1度上昇させるのに必要な熱量($C_V:=\frac{Q}{n\Delta T}$) 
+  \end{itemize}
+\end{document}
